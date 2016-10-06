@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      "use strcict";
+      var tpl = `
+          <div>
+              <span class="title">
+                  {{title}}
+              </span>
+              <span class="text">
+                  {{text}}
+              </span>
+          </div>
+      `;
+
+      var list = [
+          {
+              title: 'qwerty',
+              text: 'iuh'
+          },
+          {
+              title: 'ytrewq',
+              text: 'booooooooom'
+          },
+          {
+              title: 'asdfgh',
+              text: 'stradajte'
+          }
+      ];
+      alert(toString(list[1]));
+      function GenerateTemplate( html , inf ) {
+
+        var lngth = inf.length; //how long will be fufure tmlp
+        var html_res =''; //final HTML
+        var i;//VARIABLE FOR WHILE
+        var index_list = 0; //Variable for indeces of list
+        var z =0;
+
+        for (var i = 1; i <= lngth; i++) { //concat html n.....
+          html += html;
+        }
+
+        alert(html[570]);
+        alert(html);
+        while(i < html.length-1) {
+           if (html[i] + html[i+1] == '{{') {
+             z++;
+             var ind_ex = i+2; //start copy word;
+             var atrr = ''; //find attr name;
+
+             while (html[ind_ex] + html[ind_ex +1] !== '}}') {
+               atrr += html[ind_ex++];
+             }//while loop
+
+            if (z == 2) {
+              z = 0;
+              index_list++;
+            }
+
+            alert(inf[index_list][atrr]);
+            html_res += inf[index_list][atrr];
+            i = ind_ex;
+
+            continue;
+          }
+            html_res += html[i++];
+          console.log(i);
+        }//while loop
+        alert(html_res);
+      }
+
+      GenerateTemplate(tpl , list);
+  </script>
+</body>
+</html>

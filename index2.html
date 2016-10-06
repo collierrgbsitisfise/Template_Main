@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      "use strict";
+      var tpl = `
+          <div>
+              <span class="title">
+                  {{title}}
+              </span>
+              <span class="text">
+                  {{text}}
+              </span>
+          </div>
+      `;
+
+      var list = [
+          {
+              title: 'qwerty',
+              text: 'iuh'
+          },
+          {
+              title: 'ytrewq',
+              text: 'booooooooom'
+          },
+          {
+              title: 'asdfgh',
+              text: 'stradajte'
+          }
+      ];
+
+      function GenerateTemplate( html , inf ) {
+              var arrOfKeys = Object.keys(inf[0]);
+              var tmp_html_one = '';
+              var tmp_html_second = '';
+              var html_main = '';
+              var start;
+              var end;
+
+              for(var i = 0; i < inf.length; i++) {
+                      start = html.indexOf('{{');
+                      end = html.indexOf('}}');
+
+                      tmp_html_one = html.slice(0 , start) +inf[i]['title']+html.slice(end + 2 , html.length -1);
+
+                      start = tmp_html_one.indexOf('{{');
+                      end = tmp_html_one.indexOf('}}');
+
+                      tmp_html_second = tmp_html_one.slice(0 , start) +inf[i]['text']+tmp_html_one.slice(end + 2 , tmp_html_one.length);
+
+                      html_main += tmp_html_second;
+
+                      tmp_html_one = '';
+                      tmp_html_second = '';
+              }
+
+              alert(html_main);
+      }
+      document.body.style.background='url(image.jpeg)';
+      GenerateTemplate(tpl , list);
+  </script>
+</body>
+</html>
